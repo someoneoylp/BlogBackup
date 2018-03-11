@@ -1,13 +1,13 @@
 ---
 title: css居中方法
-date: 2018-03-07 20:00:09
+date: 2017-10-25 20:00:09
 tags: css
 ---
 ### 第一种：通过margin负值
 ``` bash 
 <div class="one"></div>
-
 ```
+<!-- more -->
 ```bash
 .one{
     position: absolute;
@@ -25,7 +25,6 @@ tags: css
 
  缺点：
 必须要固定宽高
-
 ### 第二种：通过margin:auto
 ```bash
 <div class="two"></div>

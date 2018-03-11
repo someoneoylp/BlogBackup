@@ -151,246 +151,192 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-react创建组件的三种方法以及绑定this的三种方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-http请求header信息" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/react创建组件的三种方法以及绑定this的三种方法/">react创建组件的三种方法以及绑定this的三种方法</a>
+      <a class="article-title" href="/2018/03/08/http请求header信息/">http请求header信息</a>
     </h1>
   
 
         
-        <a href="/2018/03/07/react创建组件的三种方法以及绑定this的三种方法/" class="archive-article-date">
-  	<time datetime="2018-03-07T12:04:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
+        <a href="/2018/03/08/http请求header信息/" class="archive-article-date">
+  	<time datetime="2018-03-08T02:30:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.函数定义：无状态<br>    这种组件只负责根据传入的props来展示，不涉及到要state状态的操作<br> 只有一个render方法的组件类，用于分割原本庞大的组件，如果组件不涉及state或者生命周期，尽可能使用这种方法<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> HelloComp(props)&#123;</span><br><span class="line">        <span class="built_in">return</span> &lt;div&gt;&#123;props.name&#125;&lt;/div&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>可读性好，减少大量荣誉代码，组件不会被实例化（不需要分配多余的内存），整体渲染性能得到提升<br>不能访问this对象，没有生命周期，不会有副作用，就像函数式编程一样，相同的props输入，输出的结构总是一样的，它只能访问输入的props</p>
-<p>2.es5的React.createClass ，有状态组件<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> InputControl = React.createClass(&#123;</span><br><span class="line">    prototype:&#123;&#125;,</span><br><span class="line">    defaultProps:&#123;&#125;,</span><br><span class="line">    ….</span><br><span class="line">    render: <span class="function"><span class="title">function</span></span>()&#123;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>会自动绑定函数方法，每一个成员函数的this 都与React自动绑定，支持mixins</p>
-<p>3.es6的React.Component，有状态组件<br>更好的代码复用，成员函数不会自动绑定this,不支持mixins</p>
-<p>绑定this的方法：<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.&lt;button onclick = &#123;this.handleClick.bind(this)&#125;&gt;</span><br></pre></td></tr></table></figure></p>
-<p>2.构造函数内绑定：<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    constructors(props)&#123;</span><br><span class="line">            super(props)</span><br><span class="line">            this.handleClick = this.handleClick.bind(this)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>只要绑定一次<br>3.箭头函数<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onclick = &#123;() =&gt; &#123;this.handleClick()&#125;&#125;&gt;</span><br></pre></td></tr></table></figure></p>
-<p>如果要移除监听事件，箭头函式又总是匿名的，可以使用以下方法：<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">handleClick = (e) =&gt; &#123;</span><br><span class="line">        ...</span><br><span class="line">&#125;</span><br><span class="line">&lt;button onclick = &#123;this.handleClick&#125;&gt;</span><br></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/07/react创建组件的三种方法以及绑定this的三种方法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-异步实现方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/异步实现方法/">异步实现方法</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/07/异步实现方法/" class="archive-article-date">
-  	<time datetime="2018-03-07T12:03:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="异步的来由"><a href="#异步的来由" class="headerlink" title="异步的来由"></a>异步的来由</h3><p> js的执行环境是单线程的，事件是按照顺序来执行的，只有当前事件执行完毕以后，才会去执行下一个事件，这样有时候会导致js执行阻塞。</p>
-<p>异步就出来了，当js执行的时候，碰到了异步事件，就会把这个异步事件放入一个event loop(是一个程序结构，用于等待和发送消息和事件)里面，当同步事件执行完毕以后，就会去执行event loop里面的事件。</p>
-<h3 id="js实现异步的方法"><a href="#js实现异步的方法" class="headerlink" title="js实现异步的方法"></a>js实现异步的方法</h3><pre><code>为了实现异步，我了解的js有一下几种方法（可能还有其他的）
-</code></pre><h3 id="一-回调"><a href="#一-回调" class="headerlink" title="一 回调"></a>一 回调</h3><p>回调，就是把一个函数当作一个参数传入另外一个函数，这个参数为callback,注意，回调函数不一定是异步的，也有同步的回调函数，一般是调用setTimeout,setInterval来实现异步<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  	<span class="keyword">function</span> funA(callback)&#123;</span><br><span class="line">  		console.log(<span class="string">"a"</span>)</span><br><span class="line">  		setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            callback();</span><br><span class="line">    &#125;, 1000);</span><br><span class="line">  	&#125;</span><br><span class="line">  	<span class="keyword">function</span> <span class="function"><span class="title">funC</span></span>()&#123;</span><br><span class="line">  		console.log(<span class="string">"c"</span>)</span><br><span class="line">  	&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">funcB</span></span>()&#123;</span><br><span class="line">	console.log(<span class="string">"b"</span>)</span><br><span class="line">&#125;</span><br><span class="line">funA(funcB)</span><br><span class="line">funC()</span><br></pre></td></tr></table></figure></p>
-<pre><code>运行打印结果：
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">=&gt;a</span><br><span class="line">=&gt;c</span><br><span class="line">=&gt;b</span><br></pre></td></tr></table></figure>
-</code></pre><h3 id="二事件监听"><a href="#二事件监听" class="headerlink" title="二事件监听"></a>二事件监听</h3><pre><code>函数的执行依赖某个事件是否发生。
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">function</span> handleEvent: (e) &#123;</span><br><span class="line">        console.log(e)</span><br><span class="line">&#125;</span><br><span class="line">document.body.addEventListener(<span class="string">'click'</span>, handleEvent)</span><br></pre></td></tr></table></figure>
-
-当监听到click事件的时候，才去执行handleEvent函数
-</code></pre><h3 id="三发布订阅"><a href="#三发布订阅" class="headerlink" title="三发布订阅"></a>三发布订阅</h3><pre><code>上一个事件的结果作为通知，让订阅的函数得到通知，执行
-</code></pre><h3 id="四-ajax"><a href="#四-ajax" class="headerlink" title="四 ajax"></a>四 ajax</h3><p>ajax执行请求的时候，不会堵塞，一直等待请求，而是等有了结果再来执行之后的代码，ajax的异步实现，其实是封装了XMLHttpRequest。</p>
-<p>发送一个请求，大概要以下经历：</p>
-<p>1.打开一个请求，此时并不会发送请求</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XMLHttpRequest.open(method,url,async,user,password)</span><br></pre></td></tr></table></figure>
-<p>2.设置请求头部信息</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XMLHttpRequest.setRequestHeader(<span class="string">"Content-Type"</span>,<span class="string">"application/x-www-form-urlencoded; charset=gb2312"</span>)</span><br></pre></td></tr></table></figure>
-<p>3.发送请求</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XMLHttpRequest.send(data);</span><br></pre></td></tr></table></figure>
-<p>  以上，是一个简单的请求发送。</p>
-<p>  XMLHttpRequest有readyState这个属性，它有四个值：<br>    0:为初始化 已经创建好了XMLHttpRequest对象xml，但是还没有初始化<br>    1：已经初始化好了XMLHttpRequest对象xml，准备好要发送了<br>    2：send被调用 请求已经发送 但是还没有收到服务器的响应<br>    3：浏览器正在接受服务器发送过来的请求 但是还没有接受完<br>    4：浏览器已经 接受请求完毕<br> XMLHttpRequest还有一个onreadystatechange方法，每当readyState改变的时候都会触发这个方法，所以可以根据readyState的值来执行不同的函数。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(window.XHRHttpRequest)&#123;</span><br><span class="line">      var  xhr = new XMLHttpRequest();</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      var  xhr = new ActiveObject(<span class="string">"Microsoft.XMLHTTP"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">xhr.open(<span class="string">'GET'</span>,<span class="string">'url'</span>,<span class="literal">true</span>); </span><br><span class="line">xhr.send(null);</span><br><span class="line">xhr.onreadystatechange=<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      <span class="keyword">if</span>(xml.readyState==4)&#123; </span><br><span class="line">      // 当readyState==4的时候请求完毕。</span><br><span class="line">          callback()</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-<p>ajax主要是通过onreadystatechange和readyState来实现异步，根据返回值来调用不同的回调函数</p>
-<h3 id="五-promise"><a href="#五-promise" class="headerlink" title="五 promise"></a>五 promise</h3><p>promise是es6的方法，原来的异步其实都是回调函数的方式来实现，一层嵌套一层，代码不够优雅，promise让这种这种异步更加优雅，它采用链式操作的方法来实现异步。</p>
-<h3 id="六-ansyc-await"><a href="#六-ansyc-await" class="headerlink" title="六 ansyc,await"></a>六 ansyc,await</h3><p>待续。。。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/07/异步实现方法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-移动端知识笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/移动端知识笔记/">移动端知识笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/07/移动端知识笔记/" class="archive-article-date">
-  	<time datetime="2018-03-07T12:03:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>原来不管是在学校还是上一个公司实习，做的都是后台管理系统类的页面，对于移动端适配没有要求，现在的工作主要是做移动端，为此，在这里记下工作中用到的移动端适配的知识。</p>
-<h3 id="参考内容"><a href="#参考内容" class="headerlink" title="参考内容"></a>参考内容</h3><p><a href="http://www.daqianduan.com/6281.html" target="_blank" rel="noopener">http://www.daqianduan.com/6281.html</a><br><a href="http://www.qdfuns.com/notes/18165/f08c0ec910dad6d2c90807a0318abda8.html" target="_blank" rel="noopener">http://www.qdfuns.com/notes/18165/f08c0ec910dad6d2c90807a0318abda8.html</a></p>
-<h3 id="识别手机的方法"><a href="#识别手机的方法" class="headerlink" title="识别手机的方法"></a>识别手机的方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> u = navigator.userAgent;</span><br><span class="line"><span class="built_in">let</span> phoneIsAndr = u.indexOf(<span class="string">'Android'</span>) &gt; -1 || u.indexOf(<span class="string">'Adr'</span>) &gt; -1;  // 安卓</span><br><span class="line"><span class="built_in">let</span> phoneIsIos = !!u.match(/\(i[^;]+(U;)? CPU.+Mac OS X/);  //  ios</span><br></pre></td></tr></table></figure>
-<h3 id="页面初始化宽度设置"><a href="#页面初始化宽度设置" class="headerlink" title="页面初始化宽度设置"></a>页面初始化宽度设置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span>(doc, win)&#123;</span><br><span class="line">    <span class="built_in">let</span> docE1 = doc.documentElement,</span><br><span class="line">        resizeEvt = <span class="string">'orientationchange'</span> <span class="keyword">in</span> window ? <span class="string">'orientationchange'</span> : <span class="string">'resize'</span>, // 屏幕旋转事件</span><br><span class="line">        recalc = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">            <span class="built_in">let</span> clientWidth = docE1.clientWidth &gt; 650 ? 650 : docE1.clientWidth;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">if</span>(!clientWidth) <span class="built_in">return</span> ;</span><br><span class="line">    doc.addEventListener(<span class="string">'DOMContentLoaded'</span>, recalc, <span class="literal">false</span>);</span><br><span class="line">    win.addEventListener(resizeEvt, recalc, <span class="literal">false</span>);</span><br><span class="line">&#125;)(document, window)</span><br></pre></td></tr></table></figure>
-<h3 id="meta设置"><a href="#meta设置" class="headerlink" title="meta设置"></a>meta设置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"</span> /&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>width: [pixel_value | device-width],是viewport的宽度，从200-10000，默认为980像素</li>
-<li>height: [pixel_value | device-width],是viewport的高度，从223-10000，默认为980像素 </li>
-<li>initial-scale: 初始化的缩放比例 0-10</li>
-<li>minimum-scale:允许用户缩放到最小比例</li>
-<li>maximum-scale: 允许用户放大的最大比例</li>
-<li>user-scalable”: [yes | no] 允许用户是否可以手动缩放</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta content=<span class="string">'yes'</span> name=<span class="string">'apple-mobile-web-app-capable'</span> /&gt;</span><br></pre></td></tr></table></figure>
-<p> ☝ 是否启动webapp功能，会删除默认的苹果工具栏和菜单栏</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta content=<span class="string">'black'</span> name = <span class="string">'apple-mobile-web-app-status-bar-style'</span> /&gt;</span><br></pre></td></tr></table></figure>
-<p> ☝ 当启动webapp功能的时候，显示手机信号时间电池的顶部导航栏的颜色，你默认的时候是白色（default）,可以定位黑色（black）和灰色半透明（black-translucent)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"format-detection"</span> content=<span class="string">'telphone=no, email=no'</span> /&gt;</span><br></pre></td></tr></table></figure>
-<p>☝ 格式检测，忽略页面中的数字识别为电话号码，邮箱<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"screen-orientation"</span> content=<span class="string">"portrait"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
-<p> ☝ uc强制竖屏<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"full-screen"</span> content=<span class="string">"yes"</span>&gt;</span><br></pre></td></tr></table></figure></p>
-<p> ☝ UC强制全屏<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"x5-fullscreen"</span> content=<span class="string">"true"</span>&gt;</span><br></pre></td></tr></table></figure></p>
-<p>  ☝ QQ强制全屏</p>
-<h3 id="移动端手势事件"><a href="#移动端手势事件" class="headerlink" title="移动端手势事件"></a>移动端手势事件</h3><ul>
-<li>touchstart //当手指接触屏幕时触发</li>
-<li>touchmove  // 当已经接触屏幕的手指开始移动后触发</li>
-<li>touchends  // 当手指离开屏幕时出发</li>
-<li>touchcancel //当在华东手机的过程中突然出现一个系统时间，比如电话，这就会被cancel掉</li>
-</ul>
-<blockquote>
-<p>click事件会有3000ms的延时</p>
+        <p><br></p>
+<h3 id="Referer"><a href="#Referer" class="headerlink" title="Referer"></a>Referer</h3><blockquote>
+<p>用于记录请求来源，当浏览器向web服务器发送请求的时候会带上Referer,告诉服务端，这个请求是从哪个页面链接来的,是由浏览器生成的，不是所有浏览器都会设置这个值</p>
 </blockquote>
-<h3 id="切图"><a href="#切图" class="headerlink" title="切图"></a>切图</h3><p>设计稿按照640的尺寸去切图。然后页面可以当作320来写，字体大小都除以2</p>
-<blockquote>
-<p>如果一个元素本身有font-size 那么这个元素的其他用em的长度的基准是这个元素本身的字体大小  不是父元素〉</p>
+        
+          <a class="article-more-a" href="/2018/03/08/http请求header信息/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">http</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/08/http请求header信息/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-小程序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/07/小程序/">小程序</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/07/小程序/" class="archive-article-date">
+  	<time datetime="2018-03-07T12:57:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参考资料：<a href="http://www.360doc.com/content/17/0407/09/40156408_643535157.shtml" target="_blank" rel="noopener">http://www.360doc.com/content/17/0407/09/40156408_643535157.shtml</a></p>
+<h2 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h2><ul>
+<li>开发： nw.js(c++实现的web转桌面应用)</li>
+<li>ios: webkit(苹果开源内核)</li>
+<li>android: x5(QQ浏览器内核)</li>
+</ul>
+        
+          <a class="article-more-a" href="/2018/03/07/小程序/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/07/小程序/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-记录一次腾视频面试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/07/记录一次腾视频面试/">记录一次腾视频面试</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/07/记录一次腾视频面试/" class="archive-article-date">
+  	<time datetime="2018-03-07T12:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>晚上室友正在做腾讯机试的题目，我在看无敌破坏王，腾讯面试电话就来了。。。</p>
 </blockquote>
-<h3 id="localhost换成ip没有用"><a href="#localhost换成ip没有用" class="headerlink" title="localhost换成ip没有用"></a>localhost换成ip没有用</h3><p>运行项目的时候，把loacahost换成ip,会打不开页面，解决办法如下：<br>修改webpack的配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"cross-env NODE_ENV=development webpack-dev-server --open --hot --host 0.0.0.0"</span>,</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"cross-env NODE_ENV=production webpack --progress --hide-modules"</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
-<p>运行的时候，地址栏可能是 0.0.0.0：8080，这时候要把0.0.0.0改成localhost<br>ps: 这个在代码提交的时候要改过来</p>
-<h3 id="通过meta唤醒app-ios"><a href="#通过meta唤醒app-ios" class="headerlink" title="通过meta唤醒app(ios)"></a>通过meta唤醒app(ios)</h3><p>app-id:就是产品的id<br>app-argument: 传递的参数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"apple-itunes-app"</span> content=<span class="string">"app-id=000000,pt=xxxxx,ct=xxxxx app-argument="</span>&gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="字符串格式化输出"><a href="#字符串格式化输出" class="headerlink" title="字符串格式化输出"></a>字符串格式化输出</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JSON.stringify(jsObj, null, <span class="string">"\t"</span>); </span><br><span class="line">JSON.stringify(jsObj, null, 4);</span><br></pre></td></tr></table></figure>
-<p>未完待续。。。</p>
-
+        
+          <a class="article-more-a" href="/2018/03/07/记录一次腾视频面试/#more">more >></a>
+        
       
 
       
@@ -403,7 +349,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
         		</li>
       		
 		</ul>
@@ -413,196 +359,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/07/移动端知识笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-写一个组件有感" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/写一个组件有感/">写一个组件有感</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/07/写一个组件有感/" class="archive-article-date">
-  	<time datetime="2018-03-07T12:01:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近开始工作了，其中的一个小任务就是写一个通用的提示组件，产品意思大概就是，鼠标经过提示组件图标，就出现提示信息。</p>
-<p>内心os: 太简单啦～</p>
-<p>开始动手</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;i @mouseover=<span class="string">"showTips()"</span> @mouseout=<span class="string">"showTips"</span>&gt;&lt;/i&gt;</span><br><span class="line">        &lt;p v-if=<span class="string">"show"</span>&gt;&#123;&#123;tipsMessage&#125;&#125;&lt;p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">showTips</span></span>() &#123;</span><br><span class="line">    this.show = !this.show;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>几分钟完成。</p>
-<p>然而，带我的看完代码，面色凝重，“不对，你这不对”</p>
-<p>“那里不对？”<br>“我们项目里面有些地方没有用到VUE，那些地方怎么引用？”</p>
-<p>为了在非vue的页面也能够使用，决定用动态添加class的方法来做，这样在非vue的页面可以手动去添加class来实现效果。</p>
-<p>最终代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">        &lt;i :class=<span class="string">"&#123;</span></span><br><span class="line"><span class="string">                'base-tips': true,</span></span><br><span class="line"><span class="string">                'after-tips': !tipsType,</span></span><br><span class="line"><span class="string">                'slot-tips': tipsType,</span></span><br><span class="line"><span class="string">                'hover-tips': !showTips &amp;&amp; !tipsType,</span></span><br><span class="line"><span class="string">                'show-tips': showTips &amp;&amp; !tipsType,</span></span><br><span class="line"><span class="string">                'border-tips': borderTips &amp;&amp; !tipsType,</span></span><br><span class="line"><span class="string">                'tips-icon': showIcon,</span></span><br><span class="line"><span class="string">                'tips-force-wrap': forceWrap,</span></span><br><span class="line"><span class="string">                'this-auto-wrap': autoWrap</span></span><br><span class="line"><span class="string">                &#125;"</span> </span><br><span class="line">                :value=<span class="string">"tips"</span> </span><br><span class="line">                :style =<span class="string">"&#123; </span></span><br><span class="line"><span class="string">                    maxWidth: maxWidth+'px', </span></span><br><span class="line"><span class="string">                    maxHeight: maxHeight + 'px', </span></span><br><span class="line"><span class="string">                    minHeight: minHeight+'px',</span></span><br><span class="line"><span class="string">                    minWidth: minWidth+'px',</span></span><br><span class="line"><span class="string">                    fontSize: fontSize+'px',</span></span><br><span class="line"><span class="string">                    color: fontColor &#125;"</span></span><br><span class="line">                &gt;</span><br><span class="line">            &lt;div v-if=<span class="string">"tipsType"</span>&gt;</span><br><span class="line">                &lt;p class=<span class="string">"slot-box"</span> &gt;</span><br><span class="line">                    &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">                &lt;/p&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/i&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    import Vue from <span class="string">'vue'</span></span><br><span class="line">    <span class="built_in">export</span> default &#123;</span><br><span class="line">        name: <span class="string">"VueTabs"</span>,</span><br><span class="line">        props: &#123;</span><br><span class="line">            tipsType: &#123; // 如果是0，就是不用换行自定义</span><br><span class="line">                <span class="built_in">type</span>: Number,</span><br><span class="line">                default: 0</span><br><span class="line">            &#125;,</span><br><span class="line">            tips:&#123;</span><br><span class="line">                <span class="built_in">type</span>: String,</span><br><span class="line">                default: <span class="string">""</span></span><br><span class="line">            &#125;,</span><br><span class="line">            showIcon: &#123; //图标是否显示</span><br><span class="line">                <span class="built_in">type</span>: Boolean,</span><br><span class="line">                default: <span class="literal">true</span></span><br><span class="line">            &#125;,</span><br><span class="line">            showTips:&#123; //提示一开始是否显示</span><br><span class="line">                <span class="built_in">type</span>: Boolean,</span><br><span class="line">                default: <span class="literal">false</span></span><br><span class="line">            &#125;,</span><br><span class="line">            maxHeight: &#123;</span><br><span class="line">                <span class="built_in">type</span>: Number,</span><br><span class="line">                default: null</span><br><span class="line">            &#125;,</span><br><span class="line">            maxWidth: &#123;</span><br><span class="line">                <span class="built_in">type</span>: Number,</span><br><span class="line">                default: null</span><br><span class="line">            &#125;,</span><br><span class="line">            minHeight: &#123;</span><br><span class="line">                <span class="built_in">type</span>: Number,</span><br><span class="line">                default: null</span><br><span class="line">            &#125;,</span><br><span class="line">            minWidth: &#123;</span><br><span class="line">                <span class="built_in">type</span>: Number,</span><br><span class="line">                default: null</span><br><span class="line">            &#125;,</span><br><span class="line">            autoWrap: &#123; //自动换行</span><br><span class="line">                <span class="built_in">type</span>: Boolean,</span><br><span class="line">                default: <span class="literal">true</span></span><br><span class="line">            &#125;,</span><br><span class="line">            forceWrap: &#123; //强制不换行，超出内容....</span><br><span class="line">                <span class="built_in">type</span>: Boolean,</span><br><span class="line">                default: <span class="literal">false</span></span><br><span class="line">            &#125;,</span><br><span class="line">            borderTips: &#123; //是否要border</span><br><span class="line">                <span class="built_in">type</span>: Boolean,</span><br><span class="line">                default: <span class="literal">true</span></span><br><span class="line">            &#125;,</span><br><span class="line">            fontSize: &#123; //字体大小</span><br><span class="line">                <span class="built_in">type</span>: Number,</span><br><span class="line">                default: 12</span><br><span class="line">            &#125;,</span><br><span class="line">            fontColor: &#123;</span><br><span class="line">                <span class="built_in">type</span>: String,</span><br><span class="line">                default: <span class="string">'#666666'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="title">data</span></span>() &#123;</span><br><span class="line">            <span class="built_in">return</span> &#123;</span><br><span class="line">                isSlot: <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=<span class="string">"less"</span> rel=<span class="string">"stylesheet/less"</span>&gt;</span><br><span class="line">.slot-tips&#123;</span><br><span class="line">    .slot-box&#123;</span><br><span class="line">        display: none;</span><br><span class="line">        position: absolute;</span><br><span class="line">        margin: 0 0 0 18px;</span><br><span class="line">        padding: 2px;</span><br><span class="line">        background: <span class="comment">#ffffff;</span></span><br><span class="line">        border: 1px solid <span class="comment">#d5d5d5;</span></span><br><span class="line">        border-radius: 3px;</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;:hover&#123;</span><br><span class="line">        .slot-box&#123;</span><br><span class="line">            display: block;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
-<p>在使用组件的时候可以自定义组件内部显示的形式，也有默认的形式，大体实现一下功能：</p>
-<ul>
-<li>支持Vue和普通页面使用</li>
-<li>提示内容支持设置有最大和最小的高度和宽度的限制</li>
-<li>图标支持显示隐藏</li>
-<li>多种显示方式<ul>
-<li>一个图标，鼠标移入显示提示内容浮层</li>
-<li>直接显示在页面上</li>
-</ul>
-</li>
-<li>是否支持换行<ul>
-<li>可以换行<ul>
-<li>超出显示区域自动换行</li>
-<li>使用者自主换行</li>
-</ul>
-</li>
-<li>不能换行<ul>
-<li>超出内容显示区域出现省略号，鼠标移入显示完整内容</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>小小的组件，其实代码并不复杂，但是在写的时候学会去考虑很多东西，一个好的组件应该是怎样的。<br>好的组件应该是通用的，在写的时候应该去考虑各种使用环境。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/07/写一个组件有感/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-css居中方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/css居中方法/">css居中方法</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/07/css居中方法/" class="archive-article-date">
-  	<time datetime="2018-03-07T12:00:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="第一种：通过margin负值"><a href="#第一种：通过margin负值" class="headerlink" title="第一种：通过margin负值"></a>第一种：通过margin负值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"one"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.one&#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    top:  50%;</span><br><span class="line">    left: 50%;</span><br><span class="line">    margin-left: -100px;</span><br><span class="line">    margin-right: -100px;</span><br><span class="line">    background: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> 优点：<br> 基本浏览器都能兼容</p>
-<p> 缺点：<br>必须要固定宽高</p>
-<h3 id="第二种：通过margin-auto"><a href="#第二种：通过margin-auto" class="headerlink" title="第二种：通过margin:auto"></a>第二种：通过margin:auto</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"two"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.two&#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height:100px;</span><br><span class="line">    top: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    right: 0;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    margin: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上两种方法都可以把absolute换成fixed,注意，fixed在ie下不支持</p>
-<h3 id="第三种：table-cell"><a href="#第三种：table-cell" class="headerlink" title="第三种：table-cell"></a>第三种：table-cell</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"inner"</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">"foo"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.inner&#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    display: table-cell;</span><br><span class="line">    text-align: center;</span><br><span class="line">    vertical-align: middle;</span><br><span class="line">&#125;</span><br><span class="line">.foo&#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    width: 50%;</span><br><span class="line">    height: 50%;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>设置了table-cell之后，父元素就变成了一个单元格<br><a href="http://www.jianshu.com/p/8aa3f1030908" target="_blank" rel="noopener">关于使用table-cee布局</a></p>
-<h3 id="第四种-行内元素居中"><a href="#第四种-行内元素居中" class="headerlink" title="第四种:行内元素居中"></a>第四种:行内元素居中</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"four"</span>&gt;</span><br><span class="line">    内容居中</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.four&#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    line-height: 100px;</span><br><span class="line">    text-align: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这种方法只能居中行内元素。常用于文字对其居中</p>
-<h3 id="第五种：transform居中"><a href="#第五种：transform居中" class="headerlink" title="第五种：transform居中"></a>第五种：transform居中</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"five"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.five&#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 50%;</span><br><span class="line">    height: 50%;</span><br><span class="line">    transform: translate(-50%, -50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>好处就是不可不用定义宽高，但是对于不兼容css3的浏览器没有作用</p>
-<h3 id="第六种：伪类居中"><a href="#第六种：伪类居中" class="headerlink" title="第六种：伪类居中"></a>第六种：伪类居中</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"six"</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">"content"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">.six&#123;</span><br><span class="line">    position:aabsolute;</span><br><span class="line">    left: 0;</span><br><span class="line">    right: 0;</span><br><span class="line">    top: 0;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    text-align: center;</span><br><span class="line">    &#125;</span><br><span class="line">.six:before&#123;</span><br><span class="line">    content: <span class="string">''</span>;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    vertical-align: middle;</span><br><span class="line">    height: 100%;</span><br><span class="line">    &#125;</span><br><span class="line">.six .content&#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    vertical-align: middle;</span><br><span class="line">    width: 40px;</span><br><span class="line">    height: 40px;</span><br><span class="line">    line-height: 40px;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="第八种：flex布局"><a href="#第八种：flex布局" class="headerlink" title="第八种：flex布局"></a>第八种：flex布局</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"eight"</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">"content"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.eight&#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    align-items: center;</span><br><span class="line">    justify-content: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>同样，会存在浏览器兼容问题</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/07/css居中方法/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/03/07/记录一次腾视频面试/">展开全文 >></a>
         </p>
       
 
@@ -639,34 +396,23 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/vue实现-移动端touch-点击、双指与拖拽指令-1/">vue实现 移动端touch--点击、双指与拖拽指令</a>
+      <a class="article-title" href="/2017/12/12/vue实现-移动端touch-点击、双指与拖拽指令-1/">vue实现 移动端touch--点击、双指与拖拽指令</a>
     </h1>
   
 
         
-        <a href="/2018/03/07/vue实现-移动端touch-点击、双指与拖拽指令-1/" class="archive-article-date">
-  	<time datetime="2018-03-07T11:57:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
+        <a href="/2017/12/12/vue实现-移动端touch-点击、双指与拖拽指令-1/" class="archive-article-date">
+  	<time datetime="2017-12-12T11:57:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>用vue做移动端开发过程中，需要手势操作。因为vue-touch目前不支持vue2.0，所以自己写了几个手势。</p>
-<h3 id="实现功能"><a href="#实现功能" class="headerlink" title="实现功能"></a>实现功能</h3><ul>
-<li>点击</li>
-<li>双指缩放图片</li>
-<li>移动</li>
-</ul>
-<h3 id="指令代码"><a href="#指令代码" class="headerlink" title="指令代码"></a>指令代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">myTouch.js &gt;&gt;</span><br><span class="line"><span class="built_in">export</span> default(Vue) =&gt; &#123;</span><br><span class="line">    Vue.directive(<span class="string">'touch'</span>, &#123;</span><br><span class="line">        <span class="built_in">bind</span>: <span class="keyword">function</span> (el, binding, vnode) &#123;</span><br><span class="line">            <span class="built_in">let</span> <span class="built_in">type</span> = binding.arg; // 传入点击的类型</span><br><span class="line">            <span class="built_in">let</span> coordinate = &#123;&#125; // 记录坐标点的对象</span><br><span class="line">            <span class="built_in">let</span> timeOutTap;</span><br><span class="line">            <span class="built_in">let</span> timeOutLong;</span><br><span class="line">            <span class="built_in">let</span> scaleSize; // 缩放尺寸</span><br><span class="line">            <span class="built_in">let</span> displacement = &#123;&#125;; //移动的位移</span><br><span class="line">            // 勾股定理计算距离</span><br><span class="line">            <span class="keyword">function</span> getDistance(<span class="built_in">bg</span>, end)&#123;</span><br><span class="line">                <span class="built_in">return</span> Math.sqrt(Math.pow((end.x - bg.x),2 ) + Math.pow((end.y - bg.y),2 ));</span><br><span class="line">            &#125;</span><br><span class="line">            // 点击开始的时候</span><br><span class="line">            el.addEventListener(<span class="string">'touchstart'</span>, <span class="keyword">function</span>(e)&#123;</span><br><span class="line">                // 获取第一个手指点击的坐标</span><br><span class="line">                <span class="built_in">let</span> x = e.touches[0].pageX;</span><br><span class="line">                <span class="built_in">let</span> y = e.touches[0].pageY; </span><br><span class="line">                // 如果点击的时间很长，那么点击的类型就是长按 --- longTouch</span><br><span class="line">                timeOutLong = setTimeout(() =&gt; &#123;</span><br><span class="line">                    timeOutLong = 0;</span><br><span class="line">                    <span class="keyword">if</span>(<span class="built_in">type</span> === <span class="string">'longTouch'</span>)&#123;</span><br><span class="line">                         binding.value.func(binding.value.param)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;, 2000)</span><br><span class="line">                timeOutTap = setTimeout(() =&gt; &#123;</span><br><span class="line">                    timeOutTap = 0;</span><br><span class="line">                    <span class="keyword">if</span>(<span class="built_in">type</span> === <span class="string">'tap'</span> &amp;&amp; e.touches.length === 1)&#123;</span><br><span class="line">                         binding.value.func(binding.value.param)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;, 200)</span><br><span class="line">                // 如果是两个手指，而且类型是缩放 --- scaleTocuh</span><br><span class="line">                <span class="keyword">if</span>(e.touches.length &gt; 1 &amp;&amp; <span class="built_in">type</span> === <span class="string">'scaleTouch'</span>)&#123;</span><br><span class="line">                    // 记录双指的间距长度</span><br><span class="line">                    coordinate.start =  getDistance(&#123;</span><br><span class="line">                        x: e.touches[0].pageX, </span><br><span class="line">                        y: e.touches[0].pageY,</span><br><span class="line">                    &#125;,&#123;</span><br><span class="line">                        x: e.touches[1].pageX, </span><br><span class="line">                        y: e.touches[1].pageY,</span><br><span class="line">                    &#125;)</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">                // 如果是移动的话，还要记录下来最开始的位置,只能一个手指位移</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">type</span> === <span class="string">'slideTouch'</span> &amp;&amp; e.touches.length == 1)&#123;</span><br><span class="line">                    // debugger</span><br><span class="line">                    displacement.start = &#123;</span><br><span class="line">                        x: e.touches[0].pageX,</span><br><span class="line">                        y: e.touches[0].pageY,</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, <span class="literal">false</span>)</span><br><span class="line">            el.addEventListener(<span class="string">'touchmove'</span>, <span class="keyword">function</span>(e)&#123;</span><br><span class="line">                clearTimeout(timeOutTap)</span><br><span class="line">                clearTimeout(timeOutLong)</span><br><span class="line">                timeOutTap = 0; timeOutLong = 0;</span><br><span class="line">                // 如果是缩放类型</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">type</span> == <span class="string">'scaleTouch'</span> &amp;&amp; e.touches.length === 2)&#123;</span><br><span class="line">                    // 计算移动过程中的两个手指的距离</span><br><span class="line">                    coordinate.stop = getDistance(&#123;</span><br><span class="line">                        x: e.touches[0].pageX, </span><br><span class="line">                        y: e.touches[0].pageY,</span><br><span class="line">                    &#125;,&#123;</span><br><span class="line">                        x: e.touches[1].pageX, </span><br><span class="line">                        y: e.touches[1].pageY,</span><br><span class="line">                    &#125;)</span><br><span class="line">                    // 设置缩放尺寸</span><br><span class="line">                    scaleSize = (coordinate.stop / coordinate.start)  - 1;</span><br><span class="line">                    // 这里设置图片不能无限放大与缩小</span><br><span class="line">                    // 这里设置放大缩小速度慢一点，所以 /4一下</span><br><span class="line">                    binding.value.func(scaleSize / 2, <span class="literal">false</span>)</span><br><span class="line">                &#125;</span><br><span class="line">                // 如果是移动类型</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">type</span> == <span class="string">'slideTouch'</span> &amp;&amp; e.touches.length === 1 )&#123;</span><br><span class="line">                    displacement.end = &#123;</span><br><span class="line">                        x: e.changedTouches[0].pageX,</span><br><span class="line">                        y: e.changedTouches[0].pageY,</span><br><span class="line">                    &#125;</span><br><span class="line">                    binding.value.func(&#123;x:displacement.end.x - displacement.start.x, y: displacement.end.y - displacement.start.y, is_endMove : <span class="literal">false</span>&#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, <span class="literal">false</span>)</span><br><span class="line">            el.addEventListener(<span class="string">'touchend'</span>, <span class="keyword">function</span>(e)&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">type</span> === <span class="string">'scaleTouch'</span>)&#123;</span><br><span class="line">                    binding.value.func(0, <span class="literal">true</span>)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">type</span> === <span class="string">'slideTouch'</span>)&#123;</span><br><span class="line">                    binding.value.func(&#123;x:0, y: 0, is_endMove : <span class="literal">true</span>&#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, <span class="literal">false</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">html:</span><br><span class="line"> &lt;img :src=<span class="string">"picUrl"</span> class=<span class="string">"modal_content"</span></span><br><span class="line">            v-touch:scaleTouch = <span class="string">"&#123;func: scalePic, param: ''&#125;"</span></span><br><span class="line">            v-touch:slideTouch = <span class="string">"&#123;func: movePic, param: ''&#125;"</span></span><br><span class="line">/&gt;</span><br><span class="line"></span><br><span class="line">vue:</span><br><span class="line">main.js &gt;&gt;</span><br><span class="line">import myTouch from <span class="string">'./myTouch'</span></span><br><span class="line">myTouch(Vue)</span><br><span class="line"></span><br><span class="line">app.vue &gt;&gt;</span><br><span class="line">     data:<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      <span class="built_in">return</span>&#123;</span><br><span class="line">          baseLeft : 0,</span><br><span class="line">          baseTop: 0,</span><br><span class="line">          bodyWidth: document.body.clientWidth,</span><br><span class="line">          ele: null, // 不能在这里设置， dom还没有生成</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-<h3 id="放大功能实现"><a href="#放大功能实现" class="headerlink" title="放大功能实现"></a>放大功能实现</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">scalePic: <span class="keyword">function</span>(param, is_endScale)&#123;</span><br><span class="line">      this.ele =document.getElementsByClassName(<span class="string">'modal_content'</span>)[0]; // 这个应该在图片显示的时候设置</span><br><span class="line">      <span class="built_in">let</span> nodeStyle = this.ele.style.transform;</span><br><span class="line">      <span class="built_in">let</span> changeSize = nodeStyle ?  parseFloat(nodeStyle.slice(nodeStyle.indexOf(<span class="string">'scale'</span>)+6)) : 0;</span><br><span class="line">      <span class="keyword">if</span>(is_endScale)&#123;</span><br><span class="line">        // 缩放图片结束，要重新计算定位</span><br><span class="line">        this.setMaxdisp(changeSize,parseInt(this.ele.style.marginLeft), parseInt(this.ele.style.marginTop), <span class="string">'scale'</span>)</span><br><span class="line">        <span class="built_in">return</span> </span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(nodeStyle)&#123;</span><br><span class="line">        // 如果存在的话，就说明已经设置了，scale已经改变了</span><br><span class="line">        <span class="built_in">let</span> currScaleSize = changeSize + param; </span><br><span class="line">        currScaleSize &gt; 3 ? currScaleSize = 3 : null</span><br><span class="line">        currScaleSize &lt; 1 ? currScaleSize = 1 : null</span><br><span class="line">        this.ele.style.transform = <span class="string">'translate(-50%, -50%) scale('</span>+currScaleSize+<span class="string">','</span>+currScaleSize+<span class="string">')'</span>;</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123; // 如果不存在，就说明是第一次设置</span><br><span class="line">          <span class="built_in">let</span> scale = param + 1 </span><br><span class="line">          this.ele.style.marginLeft =  <span class="string">'0px'</span>;</span><br><span class="line">          this.ele.style.marginTop  = <span class="string">'0px'</span>;</span><br><span class="line">          this.ele.style.transform = <span class="string">'translate(-50%, -50%) scale('</span>+scale+<span class="string">','</span>+scale+<span class="string">')'</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="移动功能"><a href="#移动功能" class="headerlink" title="移动功能"></a>移动功能</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">movePic: <span class="keyword">function</span>(param)&#123;</span><br><span class="line">     <span class="keyword">if</span>(param.is_endMove)&#123; // 每次移动松开手指的时候要下次移动的基础坐标</span><br><span class="line">        this.baseLeft = parseInt(this.ele.style.marginLeft.slice(0, -2));</span><br><span class="line">        this.baseTop = parseInt(this.ele.style.marginTop.slice(0, -2));</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">let</span> nodeStyle = this.ele.style.transform </span><br><span class="line">        <span class="keyword">if</span>(nodeStyle)&#123; // 有这个就表示应该是移动</span><br><span class="line">          <span class="built_in">let</span> currScaleSize = parseFloat(nodeStyle.slice(nodeStyle.indexOf(<span class="string">'scale'</span>)+6))</span><br><span class="line">          this.setMaxdisp(currScaleSize,this.baseLeft+ param.x, this.baseTop + param.y, <span class="string">'move'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="计算最大位移"><a href="#计算最大位移" class="headerlink" title="计算最大位移"></a>计算最大位移</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">setMaxdisp:<span class="keyword">function</span>(changeSize, changeX, changeY, <span class="built_in">type</span>)&#123;</span><br><span class="line">      // 计算最大位移</span><br><span class="line">      // naturalWidth ： 是图片原始的宽度，通过比例可以计算出当前图片在页面的高度</span><br><span class="line">      <span class="built_in">let</span> picHeight =  this.bodyWidth  / (this.ele.naturalWidth / this.ele.naturalHeight); </span><br><span class="line">      <span class="built_in">let</span> maxTop = ( picHeight * changeSize - window.innerHeight) /2 </span><br><span class="line">      <span class="built_in">let</span> maxLeft = this.bodyWidth / 2 * (changeSize - 1) </span><br><span class="line">      <span class="keyword">if</span>(changeX &gt;= maxLeft)&#123;</span><br><span class="line">        this.ele.style.marginLeft = maxLeft + <span class="string">'px'</span></span><br><span class="line">      &#125;<span class="keyword">else</span> <span class="keyword">if</span>(changeX &lt; -maxLeft)&#123;</span><br><span class="line">        this.ele.style.marginLeft = -maxLeft + <span class="string">'px'</span></span><br><span class="line">      &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">type</span>===<span class="string">'move'</span>)&#123;</span><br><span class="line">        this.ele.style.marginLeft =changeX +<span class="string">'px'</span>; </span><br><span class="line">      &#125;</span><br><span class="line">      // 如果图片当前尺寸大于屏幕尺寸，可以移动</span><br><span class="line">      <span class="keyword">if</span>(maxTop &gt; 0)&#123;</span><br><span class="line">        <span class="keyword">if</span>(changeY &gt;= maxTop)&#123;</span><br><span class="line">          this.ele.style.marginTop = maxTop + <span class="string">'px'</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(changeY &lt; -maxTop)&#123;</span><br><span class="line">          this.ele.style.marginTop = -maxTop + <span class="string">'px'</span></span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">type</span>===<span class="string">'move'</span>)&#123;</span><br><span class="line">          this.ele.style.marginTop = changeY+<span class="string">'px'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">type</span>===<span class="string">'move'</span>)&#123;</span><br><span class="line">        this.ele.style.marginTop = 0 +<span class="string">'px'</span>; </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><h4 id="双指与单指容易混淆"><a href="#双指与单指容易混淆" class="headerlink" title="双指与单指容易混淆"></a>双指与单指容易混淆</h4><p>在双指放大缩小的时候，两个手指松开时间不同，页面就会在两个手指松开的时候判断为点击事件。 这个还没有解决</p>
-<h4 id="计算图片位移程度"><a href="#计算图片位移程度" class="headerlink" title="计算图片位移程度"></a>计算图片位移程度</h4><p>图片不能随意的位移。应该是在一定范围内去位移的，所以写了一个计算最大位移的函数，图片位移距离应该是图片刚好能看到的程度。通过图片原始的宽高，以及页面当前的宽度比例可以计算出当前图片在页面的高度。然后计算出最大位移</p>
-<h4 id="每次移动的基础位置"><a href="#每次移动的基础位置" class="headerlink" title="每次移动的基础位置"></a>每次移动的基础位置</h4><p>图片移动或者缩小懂应该是在一个基础数据上去增加减少，如果没有设置这个基础数据，会导致每次都是从1的比例来移动以及缩小，所以每次移动以及放大缩小图片之后，都要记录下来改变之后图片的参数，下次改变图片的时候都是在这个参数基础上去改变的。</p>
-
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>用vue做移动端开发过程中，需要手势操作。因为vue-touch目前不支持vue2.0，所以自己写了几个手势。<br>
+        
+          <a class="article-more-a" href="/2017/12/12/vue实现-移动端touch-点击、双指与拖拽指令-1/#more">more >></a>
+        
       
 
       
@@ -689,7 +435,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/07/vue实现-移动端touch-点击、双指与拖拽指令-1/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/12/12/vue实现-移动端touch-点击、双指与拖拽指令-1/">展开全文 >></a>
         </p>
       
 
@@ -719,36 +465,335 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-移动端知识笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/hello-world/">Hello World</a>
+      <a class="article-title" href="/2017/11/27/移动端知识笔记/">移动端知识笔记</a>
     </h1>
   
 
         
-        <a href="/2018/03/07/hello-world/" class="archive-article-date">
-  	<time datetime="2018-03-07T11:26:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
+        <a href="/2017/11/27/移动端知识笔记/" class="archive-article-date">
+  	<time datetime="2017-11-27T12:03:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>原来不管是在学校还是上一个公司实习，做的都是后台管理系统类的页面，对于移动端适配没有要求，现在的工作主要是做移动端，为此，在这里记下工作中用到的移动端适配的知识。</p>
+        
+          <a class="article-more-a" href="/2017/11/27/移动端知识笔记/#more">more >></a>
+        
+      
 
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/27/移动端知识笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-react创建组件的三种方法以及绑定this的三种方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/07/react创建组件的三种方法以及绑定this的三种方法/">react创建组件的三种方法以及绑定this的三种方法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/07/react创建组件的三种方法以及绑定this的三种方法/" class="archive-article-date">
+  	<time datetime="2017-11-07T12:04:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.函数定义：无状态<br>    这种组件只负责根据传入的props来展示，不涉及到要state状态的操作<br> 只有一个render方法的组件类，用于分割原本庞大的组件，如果组件不涉及state或者生命周期，尽可能使用这种方法<br>
+        
+          <a class="article-more-a" href="/2017/11/07/react创建组件的三种方法以及绑定this的三种方法/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/07/react创建组件的三种方法以及绑定this的三种方法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-异步实现方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/07/异步实现方法/">异步实现方法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/07/异步实现方法/" class="archive-article-date">
+  	<time datetime="2017-11-07T12:03:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="异步的来由"><a href="#异步的来由" class="headerlink" title="异步的来由"></a>异步的来由</h3><p> js的执行环境是单线程的，事件是按照顺序来执行的，只有当前事件执行完毕以后，才会去执行下一个事件，这样有时候会导致js执行阻塞。</p>
+        
+          <a class="article-more-a" href="/2017/11/07/异步实现方法/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/07/异步实现方法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-css居中方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/css居中方法/">css居中方法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/25/css居中方法/" class="archive-article-date">
+  	<time datetime="2017-10-25T12:00:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="第一种：通过margin负值"><a href="#第一种：通过margin负值" class="headerlink" title="第一种：通过margin负值"></a>第一种：通过margin负值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"one"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/10/25/css居中方法/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/25/css居中方法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-写一个组件有感" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/22/写一个组件有感/">写一个组件有感</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/22/写一个组件有感/" class="archive-article-date">
+  	<time datetime="2017-08-22T13:01:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近开始工作了，其中的一个小任务就是写一个通用的提示组件，产品意思大概就是，鼠标经过提示组件图标，就出现提示信息。</p>
+<p>内心os: 太简单啦～<br>
+        
+          <a class="article-more-a" href="/2017/08/22/写一个组件有感/#more">more >></a>
+        
       
 
       
@@ -760,7 +805,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/07/hello-world/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/08/22/写一个组件有感/">展开全文 >></a>
         </p>
       
 
@@ -887,6 +932,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
@@ -895,11 +944,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
             
             <div class="clearfix"></div>

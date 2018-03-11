@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 欧阳的博客～～</title>
+  <title>http请求header信息 | 欧阳的博客～～</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="啊哈">
-<meta name="keywords" content="前端,js,jquery,javascript,html5">
-<meta property="og:type" content="website">
-<meta property="og:title" content="欧阳的博客～～">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="Referer 用于记录请求来源，当浏览器向web服务器发送请求的时候会带上Referer,告诉服务端，这个请求是从哪个页面链接来的,是由浏览器生成的，不是所有浏览器都会设置这个值">
+<meta name="keywords" content="http">
+<meta property="og:type" content="article">
+<meta property="og:title" content="http请求header信息">
+<meta property="og:url" content="http://yoursite.com/2018/03/08/http请求header信息/index.html">
 <meta property="og:site_name" content="欧阳的博客～～">
-<meta property="og:description" content="啊哈">
+<meta property="og:description" content="Referer 用于记录请求来源，当浏览器向web服务器发送请求的时候会带上Referer,告诉服务端，这个请求是从哪个页面链接来的,是由浏览器生成的，不是所有浏览器都会设置这个值">
+<meta property="og:updated_time" content="2018-03-11T13:34:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="欧阳的博客～～">
-<meta name="twitter:description" content="啊哈">
+<meta name="twitter:title" content="http请求header信息">
+<meta name="twitter:description" content="Referer 用于记录请求来源，当浏览器向web服务器发送请求的时候会带上Referer,告诉服务端，这个请求是从哪个页面链接来的,是由浏览器生成的，不是所有浏览器都会设置这个值">
   
     <link rel="alternative" href="/atom.xml" title="欧阳的博客～～" type="application/atom+xml">
   
@@ -149,36 +150,108 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-http请求header信息" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/08/http请求header信息/" class="archive-article-date">
-  	<time datetime="2018-03-08T02:30:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-08</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/08/http请求header信息/">http请求header信息</a>
+    <h1 class="article-title" itemprop="name">
+      http请求header信息
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/03/08/http请求header信息/" class="archive-article-date">
+  	<time datetime="2018-03-08T02:30:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><br></p>
+<h3 id="Referer"><a href="#Referer" class="headerlink" title="Referer"></a>Referer</h3><blockquote>
+<p>用于记录请求来源，当浏览器向web服务器发送请求的时候会带上Referer,告诉服务端，这个请求是从哪个页面链接来的,是由浏览器生成的，不是所有浏览器都会设置这个值</p>
+</blockquote>
+<a id="more"></a>
+<p>作用:<br>1.页面统计<br>&nbsp;&nbsp;&nbsp;&nbsp;从a链接到b页面，b的服务端可以通过Referer来统计有多少是通过a跳转到b的。<br>2.防止盗链<br>&nbsp;&nbsp;&nbsp;&nbsp;服务端通过Referer可以获知请求来源，作出处理，不是合理的请求源可以禁止访问</p>
+<p>Referer为空的情况：<br>1⃣️ 通过window.open打开的页面<br>2⃣️ 鼠标拖拽打开新窗口<br>3⃣️ 跨协议间提交请求<br>4⃣️ 从标签or浏览器地址输入地址打开<br>5⃣️ ie5.5+返回空字符串<br>6⃣️ 点击flash内部链接<br>7⃣️ h5有一个新的属性：noreferrer,，用户请求这个链接的资源时候，b不带上referer</p>
+<p>问题：<br>Referer有好几种情况为空，并且可以伪造，所以单纯通过Referer来判断用户身份是不够的</p>
+<p>如何伪造Referer:<br>WinHttpRequest可以模拟浏览器发送请求，服务端伪造<br>document.referere可以识别真是的referer</p>
+<p><br></p>
+<h3 id="Origin"><a href="#Origin" class="headerlink" title="Origin"></a>Origin</h3><blockquote>
+<p>post请求才带上的，用于说明最初请求来源</p>
+</blockquote>
+<p><br></p>
+<h3 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h3><blockquote>
+<p>让网站的发布者更加全面的控制网站，定位过期时间的设置，通过这个来定义缓存策略，控制谁在什么条件下可以缓存响应以及缓存多久，cache-control是在http1.1规范中定义的，取代了express</p>
+</blockquote>
+<p>no-store: 禁止浏览器以及中间任何缓存存储的响应<br>no-cache: 表示必须先与服务器确认返回的响应是否发生了变化，每次请求都要重新验证<br>public:  允许被代理服务器缓存，响应可以被任何缓存区缓存<br>private: 对于单个用户的整个或者部分响应，不能别共享缓存处理<br>max-age: 允许获取的响应被重用的最长时间</p>
+<p>如何客户端缓存和快速更新：<br>在资源内容改变的时候更换它的网址</p>
+<p>参考网址： <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=zh-cn" target="_blank" rel="noopener">https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=zh-cn</a><br><br></p>
+<h3 id="Connection"><a href="#Connection" class="headerlink" title="Connection"></a>Connection</h3><blockquote>
+<p>告诉客户端和服务端通信是对于长链接如何处理</p>
+</blockquote>
+<ul>
+<li>keep-alive: 客户端到服务端的连接持续有效</li>
+<li>close：关闭长链接</li>
+</ul>
+<p><br></p>
+<h3 id="Host"><a href="#Host" class="headerlink" title="Host"></a>Host</h3><blockquote>
+<p>http1.1中才有的，不可以缺失，但是可以为空，客户端指定自己想访问的http服务器的域名/IP 地址和端口号。为了实现虚拟web服务器，实现负载均衡</p>
+</blockquote>
+<h3 id="Accept"><a href="#Accept" class="headerlink" title="Accept"></a>Accept</h3><blockquote>
+<p>表达了发送端（客户端）希望接受的数据类型，这种类型用MIME类型来表示</p>
+</blockquote>
+<p>&lt;MIME_type&gt;/&lt;MIME_subtype&gt;： 单一精确的MIME类型，例如text/html<br>&lt;MIME_type&gt;/<em>: 一类类型，但是没有指明<br> </em> /*： 任意类型<br><br></p>
+<h3 id="Accept-Encoding"><a href="#Accept-Encoding" class="headerlink" title="Accept-Encoding"></a>Accept-Encoding</h3><blockquote>
+<p>客户端发给服务端，声明支持的编码格式</p>
+</blockquote>
+<p>常见：</p>
+<ul>
+<li>Accept-Encoding: compress, gzip　//支持compress 和gzip类型 </li>
+<li>Accept-Encoding:　　　//默认是identity </li>
+<li>Accept-Encoding: *　　//支持所有类型 </li>
+<li>Accept-Encoding: compress;q=0.5, gzip;q=1.0　//按顺序支持 gzip , compress </li>
+<li>Accept-Encoding: gzip;q=1.0, identity; q=0.5, *;q=0    // 按顺序支持 gzip , identity </li>
+</ul>
+<p>如果accept-encoding中所有类型服务端都不能处理，就返回404</p>
+<p><br></p>
+<h3 id="Accept-Language"><a href="#Accept-Language" class="headerlink" title="Accept-Language"></a>Accept-Language</h3><blockquote>
+<p>客户端告诉服务端理解的自然语言</p>
+</blockquote>
+<ul>
+<li>ch_CN — 简体中文</li>
+<li>zh —- 中文</li>
+<li>en — 英语</li>
+<li>fr-FR —- 法语</li>
+</ul>
+<p><br></p>
+<h3 id="User-Agent"><a href="#User-Agent" class="headerlink" title="User-Agent"></a>User-Agent</h3><blockquote>
+<p>浏览器信息</p>
+</blockquote>
+<h3 id="access-control-allow-origin（响应头信息）"><a href="#access-control-allow-origin（响应头信息）" class="headerlink" title="access-control-allow-origin（响应头信息）"></a>access-control-allow-origin（响应头信息）</h3><blockquote>
+<p>服务端响应客户端的时候，在Response header带上这个头部信息</p>
+</blockquote>
+<p>access-control-allow-origin: * —- 允许所有域名的脚本访问该资源<br>access-control-allow-origin: url —- 仅允许url域名下的脚本访问该资源</p>
+<p><br></p>
+<h3 id="X-request-width"><a href="#X-request-width" class="headerlink" title="X-request-width"></a>X-request-width</h3><p>ps: 以X大头的一般不是http的协议，可能是某种技术出现而产生的，或者某个组织指定的</p>
+<blockquote>
+<p>判断请求是传统的http请求还是ajax请求，也就是说一般ajax请求一般会带上这个头部信息</p>
+</blockquote>
+<ul>
+<li>xmlhttprequest： 是ajax请求</li>
+<li>null： 传统的同步请求</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -190,322 +263,106 @@
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/07/小程序/" class="archive-article-date">
-  	<time datetime="2018-03-07T12:57:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/07/小程序/">小程序</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/07/记录一次腾视频面试/" class="archive-article-date">
-  	<time datetime="2018-03-07T12:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/07/记录一次腾视频面试/">记录一次腾视频面试</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/12/vue实现-移动端touch-点击、双指与拖拽指令-1/" class="archive-article-date">
-  	<time datetime="2017-12-12T11:57:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/12/vue实现-移动端touch-点击、双指与拖拽指令-1/">vue实现 移动端touch--点击、双指与拖拽指令</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/08/http请求header信息/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/27/移动端知识笔记/" class="archive-article-date">
-  	<time datetime="2017-11-27T12:03:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-27</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/03/07/小程序/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">小程序</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/27/移动端知识笔记/">移动端知识笔记</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/07/react创建组件的三种方法以及绑定this的三种方法/" class="archive-article-date">
-  	<time datetime="2017-11-07T12:04:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/07/react创建组件的三种方法以及绑定this的三种方法/">react创建组件的三种方法以及绑定this的三种方法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/07/异步实现方法/" class="archive-article-date">
-  	<time datetime="2017-11-07T12:03:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/07/异步实现方法/">异步实现方法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/25/css居中方法/" class="archive-article-date">
-  	<time datetime="2017-10-25T12:00:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/25/css居中方法/">css居中方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/22/写一个组件有感/" class="archive-article-date">
-  	<time datetime="2017-08-22T13:01:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/22/写一个组件有感/">写一个组件有感</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -528,8 +385,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
